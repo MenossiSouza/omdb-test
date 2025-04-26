@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\MovieFilterRequest;
 use App\Services\MovieFilterService;
-use Illuminate\Http\Request;
 
 class MovieController extends Controller
 {
