@@ -2,31 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\MovieFilterRequest;
+use App\Services\MovieFilterService;
 use Illuminate\Http\Request;
-use App\Models\Movie;
 
 class MovieController extends Controller
 {
-    public function index(Request $request)
+    protected $movieFilterService;
+
+    public function __construct(MovieFilterService $movieFilterService)
     {
-        $query = Movie::query();
+        $this->movieFilterService = $movieFilterService;
+    }
 
-        $request->validate([
-            'title' => ['sometimes', 'string'],
-            'year' => ['sometimes', 'integer'],
-            'director' => ['sometimes', 'string'],
-        ]);
+    public function index(MovieFilterRequest $request)
+    {
+        $movies = $this->movieFilterService->filterMovies($request->validated());
 
-        if ($request->filled('title')) {
-            $query->where('title', 'like', '%' . $request->title . '%');
-        }
-        if ($request->filled('year')) {
-            $query->where('year', $request->year);
-        }
-        if ($request->filled('director')) {
-            $query->where('director', 'like', '%' . $request->director . '%');
-        }
-
-        return response()->json($query->get());
+        return response()->json($movies);
     }
 }
