@@ -5,7 +5,7 @@
 2. Executar o comando `composer install` para insatalção das depêndencias do projeto
 3. Executar o comando `php artisan migrate` para criação da estrutra do banco de dados
 4. Executar o comando `php artisan movies:import "King Lion"` para importar filmes
-5. Executar o comando `php artisan serve"` para iniciar o servidor artisan
+5. Executar o comando `php artisan serve` para iniciar o servidor artisan
 
 ## Endpoint:
  GET /api/movies
