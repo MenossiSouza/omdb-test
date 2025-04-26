@@ -33,10 +33,10 @@ Parâmetros opcionais:
     ]
 
 ## Testes
-  can create movie instance - consegue criar uma instância de movie?
-  movies endpoint returns data - endpoit da consulta de filmes retorna resultados?
-  import movies successfully - importação de filmes existentes/encontrados funciona com sucesso?
-  import movies not found   - importação de filmes não existentes/não encontrados funciona com sucesso?
+-  `can create movie instance - consegue criar uma instância de movie?`
+-  `movies endpoint returns data - endpoit da consulta de filmes retorna resultados?`
+-  `import movies successfully - importação de filmes existentes/encontrados funciona com sucesso?`
+-  `import movies not found   - importação de filmes não existentes/não encontrados funciona com sucesso?`
 
 ### Rodar testes
   Execute `php artisan test` para rodar os testes de unidade.
