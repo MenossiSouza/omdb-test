@@ -4,9 +4,9 @@ namespace App\Services;
 
 use App\Models\Movie;
 
-class MovieFilterService
+class MoviesRepository
 {
-    public function filterMovies(array $filters)
+    public function findAllBy(array $filters)
     {
         $query = Movie::query();
 

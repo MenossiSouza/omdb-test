@@ -38,7 +38,7 @@ class MovieTest extends TestCase
         $this->assertEquals(2002, $movie->year);
     }
 
-    public function test_can_filter_movies_by_title()
+    public function test_can_find_movies_by_title()
     {
         Movie::create([
             'imdb_id' => 'tt1234567',
@@ -54,7 +54,7 @@ class MovieTest extends TestCase
                 ->assertJsonFragment(['title' => 'Spider-Man']);
     }
 
-    public function test_can_filter_movies_by_director()
+    public function test_can_find_movies_by_director()
     {
         Movie::create([
             'imdb_id' => 'tt1234567',
@@ -70,7 +70,7 @@ class MovieTest extends TestCase
                 ->assertJsonFragment(['director' => 'Sam Raimi']);
     }
 
-    public function test_can_filter_movies_by_year()
+    public function test_can_find_movies_by_year()
     {
         Movie::create([
             'imdb_id' => 'tt1234567',

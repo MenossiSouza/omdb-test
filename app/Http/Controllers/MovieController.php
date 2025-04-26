@@ -2,22 +2,34 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\MovieFilterRequest;
-use App\Services\MovieFilterService;
+use App\Http\Requests\MovieValidatorRequest;
+use App\Services\MoviesRepository;
+use Exception;
 
 class MovieController extends Controller
 {
-    protected $movieFilterService;
+    protected $moviesRepository;
 
-    public function __construct(MovieFilterService $movieFilterService)
+    public function __construct(MoviesRepository $moviesRepository)
     {
-        $this->movieFilterService = $movieFilterService;
+        $this->moviesRepository = $moviesRepository;
     }
 
-    public function index(MovieFilterRequest $request)
+    public function index(MovieValidatorRequest $request)
     {
-        $movies = $this->movieFilterService->filterMovies($request->validated());
+        try {
+            $movies = $this->moviesRepository->findAllBy($request->validated());
+            if ($movies->isEmpty()) {
+                return response()->json([
+                    'message' => 'Nenhum resultado encontrado.'
+                ], 404);
+            } 
 
-        return response()->json($movies);
+            return response()->json($movies);
+        } catch (Exception $e) {
+            return response()->json([
+                'error' => $e
+            ], 500);
+        }
     }
 }

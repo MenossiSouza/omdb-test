@@ -26,4 +26,13 @@ class MovieApiTest extends TestCase
             'title' => 'Batman Begins'
         ]);
     }
+
+    public function test_movies_endpoint_not_returns_data()
+    {
+        $response = $this->getJson('/api/movies?title=batman');
+
+        $response->assertStatus(404)->assertJsonFragment([
+            'message' => 'Nenhum resultado encontrado.'
+        ]);
+    }
 }
