@@ -34,12 +34,14 @@ Parâmetros opcionais:
 
 ## Testes
 -  `can create movie instance - consegue criar uma instância de movie?`
+-  `can create a movie in database - consegue inserir um novo filme no banco de dados?`
 -  `movies endpoint returns data - endpoit da consulta de filmes retorna resultados?`
 -  `import movies successfully - importação de filmes existentes/encontrados funciona com sucesso?`
 -  `import movies not found   - importação de filmes não existentes/não encontrados funciona com sucesso?`
--  `test_can_filter_movies_by_title - consegue filtrar os filmes pelo titulo?`
--  `test_can_filter_movies_by_director - consegue filtrar os filmes pelo diretor?`
--  `test_can_filter_movies_by_year - consegue filtrar os filmes pelo ano?`
+-  `can filter movies by title - consegue filtrar os filmes pelo titulo?`
+-  `can filter movies by director - consegue filtrar os filmes pelo diretor?`
+-  `can filter movies by year - consegue filtrar os filmes pelo ano?`
+-  `year is casted as integer - converte o ano em inteiro automaticamente?`
 
 ### Rodar testes
   Execute `php artisan test` para rodar os testes de unidade.
