@@ -37,6 +37,7 @@ Parâmetros opcionais:
 -  `movies endpoint returns data - endpoit da consulta de filmes retorna resultados?`
 -  `import movies successfully - importação de filmes existentes/encontrados funciona com sucesso?`
 -  `import movies not found   - importação de filmes não existentes/não encontrados funciona com sucesso?`
+-  `test_can_filter_movies_by_title - consegue filtrar os filmes pelo titulo?`
 
 ### Rodar testes
   Execute `php artisan test` para rodar os testes de unidade.
