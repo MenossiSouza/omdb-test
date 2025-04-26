@@ -64,6 +64,19 @@ paths:
                   message:
                     type: string
                     example: "Nenhum resultado encontrado."
+        '422':
+          description: Formato inválido de query.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      field:
+                        type: string
+                        example: "The year field must be an integer."
         '500':
           description: Erro interno no servidor.
           content:
