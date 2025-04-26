@@ -7,6 +7,9 @@
 4. Executar o comando `php artisan movies:import "King Lion"` para importar filmes
 5. Executar o comando `php artisan serve` para iniciar o servidor artisan
 
+### Rodar testes
+  Execute `php artisan test` para rodar os testes de unidade.
+
 ## Endpoint:
  GET /api/movies
 
@@ -15,33 +18,11 @@ Parâmetros opcionais:
 - `year`
 - `director`
 
-## Exemplo de requisição:
-   # Request
-    'GET http://127.0.0.1:8000/api/movies?title=King lion'
-   # Response
-    [
-        {
-            "id": 37,
-            "imdb_id": "tt2374051",
-            "title": "Simba: The King Lion",
-            "year": "1995",
-            "director": "N\/A",
-            "genre": "Animation, Action, Drama",
-            "created_at": "2025-04-26T08:14:03.000000Z",
-            "updated_at": "2025-04-26T08:14:03.000000Z"
-        }
-    ]
+# Documentação da API
 
-## Testes
--  `can create movie instance - consegue criar uma instância de movie?`
--  `can create a movie in database - consegue inserir um novo filme no banco de dados?`
--  `movies endpoint returns data - endpoit da consulta de filmes retorna resultados?`
--  `import movies successfully - importação de filmes existentes/encontrados funciona com sucesso?`
--  `import movies not found   - importação de filmes não existentes/não encontrados funciona com sucesso?`
--  `can filter movies by title - consegue filtrar os filmes pelo titulo?`
--  `can filter movies by director - consegue filtrar os filmes pelo diretor?`
--  `can filter movies by year - consegue filtrar os filmes pelo ano?`
--  `year is casted as integer - converte o ano em inteiro automaticamente?`
+A documentação da API está disponível no arquivo [openapi.yaml](docs/openapi.yaml).
 
-### Rodar testes
-  Execute `php artisan test` para rodar os testes de unidade.
+
+
+
+

@@ -1,0 +1,76 @@
+openapi: 3.0.0
+info:
+  title: Movie API
+  description: API para consulta de filmes.
+  version: 1.0.0
+
+paths:
+  /api/movies:
+    get:
+      summary: Busca filmes pelo título.
+      description: Retorna uma lista de filmes que correspondem ao título fornecido na query string.
+      operationId: getMoviesByTitle
+      parameters:
+        - name: title
+          in: query
+          description: O título do filme a ser buscado.
+          required: true
+          schema:
+            type: string
+            example: "King lion"
+      responses:
+        '200':
+          description: Lista de filmes encontrados.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                      example: 37
+                    imdb_id:
+                      type: string
+                      example: "tt2374051"
+                    title:
+                      type: string
+                      example: "Simba: The King Lion"
+                    year:
+                      type: string
+                      example: "1995"
+                    director:
+                      type: string
+                      example: "N/A"
+                    genre:
+                      type: string
+                      example: "Animation, Action, Drama"
+                    created_at:
+                      type: string
+                      format: date-time
+                      example: "2025-04-26T08:14:03.000000Z"
+                    updated_at:
+                      type: string
+                      format: date-time
+                      example: "2025-04-26T08:14:03.000000Z"
+        '404':
+          description: Nenhum filme encontrado para o título especificado.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Nenhum resultado encontrado."
+        '500':
+          description: Erro interno no servidor.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Mensagem de erro detalhada."
