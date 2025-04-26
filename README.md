@@ -38,6 +38,8 @@ Parâmetros opcionais:
 -  `import movies successfully - importação de filmes existentes/encontrados funciona com sucesso?`
 -  `import movies not found   - importação de filmes não existentes/não encontrados funciona com sucesso?`
 -  `test_can_filter_movies_by_title - consegue filtrar os filmes pelo titulo?`
+-  `test_can_filter_movies_by_director - consegue filtrar os filmes pelo diretor?`
+-  `test_can_filter_movies_by_year - consegue filtrar os filmes pelo ano?`
 
 ### Rodar testes
   Execute `php artisan test` para rodar os testes de unidade.
