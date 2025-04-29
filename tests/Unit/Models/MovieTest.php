@@ -92,7 +92,7 @@ class MovieTest extends TestCase
                 ->assertJsonFragment(['year' => 2002]);
     }
 
-    public function test_year_is_casted_as_integer()
+    public function test_year_is_cast_as_integer()
     {
         $movie = Movie::create([
             'imdb_id' => 'tt9876543',
