@@ -20,7 +20,9 @@ class MovieApiTest extends TestCase
             'genre' => 'Action',
         ]);
 
-        $response = $this->getJson('/api/movies?title=batman');
+        $response = $this->getJson('/api/movies?title=batman', [
+            'Authorization' => 'Bearer ' . env('API_SECRET')
+        ]);
 
         $response->assertStatus(200)->assertJsonFragment([
             'title' => 'Batman Begins'
@@ -29,7 +31,9 @@ class MovieApiTest extends TestCase
 
     public function test_movies_endpoint_not_returns_data()
     {
-        $response = $this->getJson('/api/movies?title=batman');
+        $response = $this->getJson('/api/movies?title=batman', [
+            'Authorization' => 'Bearer ' . env('API_SECRET')
+        ]);
 
         $response->assertStatus(404)->assertJsonFragment([
             'message' => 'Nenhum resultado encontrado.'

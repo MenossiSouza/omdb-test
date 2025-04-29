@@ -48,7 +48,9 @@ class MovieTest extends TestCase
             'genre' => 'Action',
         ]);
 
-        $response = $this->getJson('api/movies?title=Spider');
+        $response = $this->getJson('api/movies?title=Spider', [
+            'Authorization' => 'Bearer ' . env('API_SECRET')
+        ]);
 
         $response->assertOk()
                 ->assertJsonFragment(['title' => 'Spider-Man']);
@@ -64,7 +66,9 @@ class MovieTest extends TestCase
             'genre' => 'Action',
         ]);
 
-        $response = $this->getJson('api/movies?title=Spider');
+        $response = $this->getJson('api/movies?title=Spider', [
+            'Authorization' => 'Bearer ' . env('API_SECRET')
+        ]);
 
         $response->assertOk()
                 ->assertJsonFragment(['director' => 'Sam Raimi']);
@@ -80,7 +84,9 @@ class MovieTest extends TestCase
             'genre' => 'Action',
         ]);
 
-        $response = $this->getJson('api/movies?title=Spider');
+        $response = $this->getJson('api/movies?title=Spider', [
+            'Authorization' => 'Bearer ' . env('API_SECRET')
+        ]);
 
         $response->assertOk()
                 ->assertJsonFragment(['year' => 2002]);
