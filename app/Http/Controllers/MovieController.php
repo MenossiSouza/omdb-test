@@ -17,18 +17,33 @@ class MovieController extends Controller
 
     public function index(MovieValidatorRequest $request)
     {
+        $authorization = $request->header('Authorization');
+        $secret = env('API_SECRET');
+
+        if (!$authorization || !str_starts_with($authorization, 'Bearer ')) {
+            return response()->json(['error' => 'Unauthorized'], 401);
+        }
+
+        $token = substr($authorization, 7);
+
+        if ($token !== $secret) {
+            return response()->json(['error' => 'Unauthorized'], 401);
+        }
+        
         try {
             $movies = $this->moviesRepository->findAllBy($request->validated());
             if ($movies->isEmpty()) {
                 return response()->json([
                     'message' => 'Nenhum resultado encontrado.'
                 ], 404);
-            } 
+            }
 
             return response()->json($movies);
         } catch (Exception $e) {
             return response()->json([
-                'error' => $e
+                'error' => [
+                    'message' => $e->getMessage(),
+                ]
             ], 500);
         }
     }
