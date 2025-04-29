@@ -4,29 +4,23 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\MovieValidatorRequest;
 use App\Services\MoviesRepository;
+use App\Services\AuthService;
 use Exception;
 
 class MovieController extends Controller
 {
     protected $moviesRepository;
+    protected $authService;
 
-    public function __construct(MoviesRepository $moviesRepository)
+    public function __construct(MoviesRepository $moviesRepository, AuthService $authService)
     {
         $this->moviesRepository = $moviesRepository;
+        $this->authService = $authService;
     }
 
     public function index(MovieValidatorRequest $request)
     {
-        $authorization = $request->header('Authorization');
-        $secret = env('API_SECRET');
-
-        if (!$authorization || !str_starts_with($authorization, 'Bearer ')) {
-            return response()->json(['error' => 'Unauthorized'], 401);
-        }
-
-        $token = substr($authorization, 7);
-
-        if ($token !== $secret) {
+        if (!$this->authService->auth($request)) {
             return response()->json(['error' => 'Unauthorized'], 401);
         }
         

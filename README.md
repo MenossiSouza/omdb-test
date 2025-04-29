@@ -2,7 +2,7 @@
 
 ## Instalação
 1. Configurar o `.env` com as crendencias de banco de dados e a key(OMDB_API_KEY) que você pode gerar em: [omdbapi](https://www.omdbapi.com/apikey.aspx)
-2. Configurar `API_SECRET` no `.env` com: `API_SECRET=AS214412OJ@IXAS@OAPAU`
+2. Configurar `API_SECRET` no `.env` com: `API_SECRET=9d7b925b0fa4d99e1f708cb6b5a1b7081e0cbe92`
 3. Executar o comando `composer install` para instalação das dependências do projeto
 4. Executar o comando `php artisan key:generate` (caso ainda não tenha uma APP_KEY)
 5. Executar o comando `php artisan migrate` para criação da estrutura do banco de dados
